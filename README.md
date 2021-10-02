@@ -6,7 +6,7 @@
 - Destructuring
 - Stream
 - Geração de PDF com ejs
+- Requisições
 - JWT
-- Multer
 - Swagger
 

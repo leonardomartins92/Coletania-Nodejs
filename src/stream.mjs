@@ -3,7 +3,7 @@ node -e "process.stdout.write(crypto.randomBytes(1e9))" > assets/big.file
 */
 
 //1- Leitura de arquivo grande através de stream
-/*
+
 const http = require('http');
 const {readFileSync, createReadStream} = require('fs');
 
@@ -11,18 +11,18 @@ http.createServer((req,res)=>{
 
     createReadStream("big.file")
     .pipe(res)
-}).listen(3000, ()=> console.log('running at 3000'))*/
+}).listen(3000, ()=> console.log('running at 3000'))
 
-//2- Duplex Stream (ler e escrever)
-/*Conectar terminal com o server criado
-node -e "process.stdin.pipe(require('net').connect(1338))"
+/*2- Duplex Stream (ler e escrever)
+Conectar terminal com o server criado
+node -e "process.stdin.pipe(require('net').connect(1338))"*/
 
 import net from 'net'
 
-net.createServer(socket => socket.pipe(process.stdout)).listen(1338)*/
+net.createServer(socket => socket.pipe(process.stdout)).listen(1338)
 
 //3- Pipeline de stream 
-/*
+
 import {pipeline, Readable, Writable} from 'stream'
 import {promisify} from 'util'
 
@@ -42,9 +42,9 @@ const writableStream = Writable({
     }
 })
 
-await pipelineAsync(readableStream, writableStream) */
+await pipelineAsync(readableStream, writableStream) 
 
-//4-
+//4- Gerar CSV de stream lido
 import {pipeline, Readable, Writable, Transform} from 'stream'
 import {promisify} from 'util'
 import {createWriteStream} from 'fs'

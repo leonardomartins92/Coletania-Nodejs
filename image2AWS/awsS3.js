@@ -14,7 +14,7 @@ const uuid = require('uuid/v1')
 app.get('/api-upload', (req,res)=>{
     const key = `${req.user.id}/${uuid()}.jpeg`
 
-    s3.getSignedUrl('putObject',{
+   const upload = s3.getSignedUrl('putObject',{
         Bucket: 'nome-do-Bucket-criado-na-AWS',
         ContentType: 'image/jpeg',
         Key:  key
@@ -22,6 +22,8 @@ app.get('/api-upload', (req,res)=>{
         res.send({url, key});
     })
 })
+//Importante configurar nas permissoes do bucket na AWS para aceitar PUT, para não dar problema de CORS  160
+// Ir no policy gen, gerar e adicionar na permissão do bucket a policy para que as imagens salvas possam ser acessadas. 162
 
 /* Front-end usará a url para conectar com o bucket e salvar o arquivo
     
@@ -34,3 +36,5 @@ app.get('/api-upload', (req,res)=>{
     })
 
 */
+
+

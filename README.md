@@ -5,6 +5,7 @@
 - Clustering
 - Destructuring
 - Stream
+- AWS S3 image upload
 - Geração de PDF com ejs
 - Requisições
 - JWT

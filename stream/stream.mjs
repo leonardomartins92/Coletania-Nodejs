@@ -4,6 +4,16 @@
 node -e "process.stdout.write(crypto.randomBytes(1e9))" > assets/big.file
 */
 
+//Envio de PDF por Stream
+{
+var file = fs.createReadStream('./assets/meuPdf.pdf');
+var stat = fs.statSync('./assets/meuPdf.pdf');
+res.setHeader('Content-Length', stat.size);
+res.setHeader('Content-Type', 'application/pdf');
+res.setHeader('Content-Disposition', 'attachment; filename=boleto.pdf');
+file.pipe(res);
+}
+
 //Leitura de arquivo grande através de stream
 {
 const http = require('http');
